@@ -1,9 +1,12 @@
+package sj.optional;
+
 import java.util.Optional;
 
 public class HelloOptional {
 
     public static void main(String [] args){
-        Optional man = Optional.empty();
+        Optional<Man> man = Optional.of(new Man("sanjay",34));
+        man.ifPresent(m ->{ System.out.print(m.getName()); System.out.print(" " +m.getAge());});
 
 
     }
@@ -20,5 +23,13 @@ class Man{
 
     public void printMsg(){
         System.out.println("Hi {binary gap }");
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
     }
 }
