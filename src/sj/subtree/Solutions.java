@@ -10,10 +10,8 @@ class Solutions {
      */
     public int nodeCountOfBiggestPBT(Tree T) {
         int height = findHeight(T);
-        if (maxHeight < height){
-            maxHeight = height;
-        }
-        return (int) (Math.pow(2, maxHeight +1)-1);
+
+        return (int) (Math.pow(2, height +1)-1);
     }
 
     public int findHeight(Tree T){
@@ -23,10 +21,8 @@ class Solutions {
         }
         int ltHeight = findHeight(T.l);
         int rtHeight = findHeight(T.r);
-        if (ltHeight == rtHeight){
+        if (ltHeight <= rtHeight){
             tHeight = ltHeight +1;
-        }else if (ltHeight < rtHeight){
-            tHeight = ltHeight+1;
         }else{
             tHeight = rtHeight+1;
         }

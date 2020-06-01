@@ -1,5 +1,9 @@
 package sj.threads;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
@@ -7,7 +11,7 @@ import java.util.concurrent.Executors;
 
 public class HelloCyclicBarrier {
 
-    public static void main(String [] args){
+    public static void main(String [] args) throws BrokenBarrierException, InterruptedException {
 
         CyclicBarrier cb = new CyclicBarrier(2);
         ExecutorService es = Executors.newFixedThreadPool(1);
@@ -22,8 +26,11 @@ public class HelloCyclicBarrier {
                 e.printStackTrace();
             }
         });
+        Thread.sleep(500);
         System.out.println("waiting cb count is : " + cb.getParties() + " waiting for " + cb.getNumberWaiting());
-        //   cb.await();
+
+        Thread.sleep(1000);
+        cb.await();
         System.out.println("main continues the processing : " + cb.getNumberWaiting());
 
         es.shutdown();

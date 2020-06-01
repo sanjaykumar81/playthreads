@@ -1,10 +1,13 @@
 package sj.subtree;
 
+import java.util.TreeMap;
+
 public class Tree{
     public int data;
     public Tree l;
     public Tree r;
     public Tree(int data, Tree l, Tree r) {
+        TreeMap<String, String> tree= new TreeMap<>();
         this.data = data;
         this.l = l;
         this.r = r;
